@@ -1,15 +1,17 @@
 
+from pathlib import Path
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.messages import SystemMessage, HumanMessage
 from app.config import settings
 from app.rag.retriever import Retriever
-import os
+
+BACKEND_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 class Generator():
     def __init__(self):
         self.__llm = settings.chat_model
-        prompt_path = os.path.join("app", "prompts", "generator_prompt.md")
+        prompt_path = BACKEND_DIR / "app" / "prompts" / "generator_prompt.md"
         with open(prompt_path, 'r', encoding='utf-8') as f:
             self.__system_prompt = f.read()
 

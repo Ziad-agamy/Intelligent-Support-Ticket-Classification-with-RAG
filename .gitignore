@@ -1,6 +1,8 @@
 # Environments
 .env
 .env.local
+backend/.env
+backend/.env.local
 venv/
 .venv/
 env/
@@ -15,7 +17,7 @@ __pycache__/
 htmlcov/
 *.sqlite3
 
-# Node.js / Frontend (form/)
+# Node.js / Frontend
 node_modules/
 dist/
 build/
@@ -25,8 +27,8 @@ yarn-error.log*
 .eslintcache
 
 # Project Specific
-faiss_index/
-data/*.csv
+backend/rag_artifacts/
+backend/data/*.csv
 
 # General OS
 .DS_Store

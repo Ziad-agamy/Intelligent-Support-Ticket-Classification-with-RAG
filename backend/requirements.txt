@@ -1,11 +1,11 @@
---extra-index-url https://download.pytorch.org/whl/cpu
 fastapi
 scalar_fastapi
 pydantic[email]
 uvicorn[standard]
 python-dotenv
+asyncpg
 
-scikit-learn
+scikit-learn==1.8.0
 joblib
 pandas
 numpy
@@ -20,12 +20,7 @@ langchain-cohere
 langchain-groq
 langchain-ollama
 
-faiss-cpu
+pinecone
+langchain-pinecone
 rank_bm25
 cohere
-
-transformers
-datasets
-torch
-sentence-transformers
-transformers[torch]
