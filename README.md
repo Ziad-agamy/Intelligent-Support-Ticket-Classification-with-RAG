@@ -1,6 +1,5 @@
 # Customer Support Ticket System
 
-<<<<<<< HEAD
 An intelligent, AI-powered customer support ticket system that automates query handling using a Retrieval-Augmented Generation (RAG) pipeline. Users submit support tickets through a web form, and the system classifies their query, retrieves relevant information from a knowledge base, and generates a contextual AI response in real time.
 
 ---
@@ -210,9 +209,3 @@ This also regenerates the BM25 artifacts in `backend/rag_artifacts/`.
 - `backend/rag_artifacts/` must exist at startup (it's required for BM25). It's gitignored and can be regenerated via the ingestion script.
 - If you encounter `ModuleNotFoundError: No module named 'langchain_classic'`, this is a known issue — the intended imports (`EnsembleRetriever`, `ContextualCompressionRetriever`) should come from `langchain.retrievers` or `langchain_community` rather than `langchain_classic`.
 - No test framework, linter, or type checker is currently configured.
-=======
-
-## Project Demo
-
-[watch demo](https://github.com/user-attachments/assets/bf549e04-bd1b-4491-a6cd-d1fc38e15d90)
->>>>>>> 459785d68c5b8d08f829bf740cc585e34803203d

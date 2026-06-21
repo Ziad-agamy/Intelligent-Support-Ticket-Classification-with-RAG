@@ -28,7 +28,8 @@ function App() {
     setStatus({ type: '', message: '' })
 
     try {
-      const response = await fetch('/support/submit', {
+      const API_URL = import.meta.env.VITE_API_URL || ""
+      const response = await fetch(`${API_URL}/support/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

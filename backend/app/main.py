@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.database.base import Base
 from app.database.session import engine
 from app.api.routes import router
+import os
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -14,12 +15,15 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Customer Support Ticket System", lifespan=lifespan)
 
+origins = [
+    origin.strip()
+    for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+    if origin.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000"
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
