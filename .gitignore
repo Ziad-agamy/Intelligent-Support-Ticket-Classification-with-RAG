@@ -27,7 +27,7 @@ yarn-error.log*
 .eslintcache
 
 # Project Specific
-backend/rag_artifacts/
+# backend/rag_artifacts/  # uncommented for Azure deploy — BM25 pickles required at startup
 backend/data/*.csv
 
 # General OS
