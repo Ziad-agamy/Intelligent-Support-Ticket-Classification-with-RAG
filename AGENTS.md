@@ -66,3 +66,16 @@ npm run dev   # serves on :3000, proxies /api & /support to :8000
 - `POST /support/submit` — accepts `SupportFormInput` (first_name, last_name, email, phone, question). Returns `{id, llm_response, created_at}`.
 - `GET /` — `{"message": "Customer Support Ticket System API"}`
 - `GET /health` — `{"status": "healthy"}`
+
+## Design Context
+
+- **Register**: product — design SERVES the product (support ticket form, restrained, earned familiarity).
+- **Personality**: calm, expert, trustworthy. Voice is direct, sentence-case, no exclamation marks, no apology cascades.
+- **Authoritative files**: `PRODUCT.md` (strategic), `DESIGN.md` (visual: OKLCH palette, type, motion, banned patterns).
+- **Current code violation**: `frontend/src/Form.css`, `frontend/src/ThankYou.css`, `frontend/src/index.css` use the 2023-era purple-gradient AI default and are slated for replacement.
+- **Color anchor**: burnt-honey primary `oklch(0.620 0.180 56)` on pure-white `oklch(1.000 0.000 0)` surface, with slate-blue accent `oklch(0.450 0.105 250)`. All colors in OKLCH; never hex.
+- **Bans committed in DESIGN.md**: no purple/indigo gradients, no drop shadows > 8px blur, no border-radius > 16px on cards, no gradient text, no glassmorphism, no sketchy SVG, no uppercase tracked kickers, no `translateY(-2px)` hover bumps, no bounce/elastic easing.
+- **Accessibility floor**: WCAG 2.2 AA. Body contrast ≥ 4.5:1, large text ≥ 3:1, focus rings never removed, `prefers-reduced-motion` honored, touch targets ≥ 44px, programmatic labels on all fields.
+- **Live mode**: configured at `.impeccable/live/config.json` (Vite SPA, single shell `frontend/index.html`). CSP check returned no signals.
+
+When working on frontend code, read `PRODUCT.md` and `DESIGN.md` first; their bans and tokens override any reflex defaults.
