@@ -9,6 +9,7 @@ from langchain_groq import ChatGroq
 BACKEND_DIR = Path(__file__).resolve().parent.parent
 
 class Settings(BaseSettings):
+    # Environment Variables
     GROQ_API_KEY: str
     COHERE_API_KEY: str
     PINECONE_API_KEY: str
@@ -20,10 +21,13 @@ class Settings(BaseSettings):
     PGUSER: str
     PGPASSWORD: str
 
+    # Pydantic Settings Configuration
     model_config = SettingsConfigDict(
         env_file=BACKEND_DIR / ".env",
+        env_file_encoding="utf-8",
         env_ignore_empty=True,
-        extra="ignore"
+        extra="ignore",
+        case_sensitive=False  # Tells Pydantic to read Azure's uppercase env keys cleanly
     )
 
     @property
@@ -35,7 +39,8 @@ class Settings(BaseSettings):
 
     @property
     def embedding_model(self):
-        return OllamaEmbeddings(model="qwen3-embedding:0.6b", base_url=settings.OLLAMA_BASE_URL)
+        # FIXED: Changed 'settings.OLLAMA_BASE_URL' to 'self.OLLAMA_BASE_URL'
+        return OllamaEmbeddings(model="qwen3-embedding:0.6b", base_url=self.OLLAMA_BASE_URL)
 
     @property
     def chat_model(self):
@@ -45,4 +50,5 @@ class Settings(BaseSettings):
     def rerank_model(self):
         return CohereRerank(model="rerank-english-v3.0", top_n=5, cohere_api_key=self.COHERE_API_KEY)
 
+# Instantiate the configurations
 settings = Settings()
