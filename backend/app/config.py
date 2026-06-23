@@ -35,6 +35,7 @@ class Settings(BaseSettings):
         return (
             f"postgresql+asyncpg://{self.PGUSER}:{quote(self.PGPASSWORD, safe='')}"
             f"@{self.PGHOST}:{self.PGPORT}/{self.PGDATABASE}"
+            f"?prepared_statement_cache_size=0"
         )
 
     @property
